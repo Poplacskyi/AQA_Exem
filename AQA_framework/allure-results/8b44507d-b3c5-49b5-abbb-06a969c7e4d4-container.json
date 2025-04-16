@@ -1,0 +1,1 @@
+{"uuid":"8b44507d-b3c5-49b5-abbb-06a969c7e4d4","name":"ui_test.ButtonsTest.setUp","children":["a9e4a7d2-f8b1-4c7c-8173-b5bf1a4f20ad"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1744840696627,"stop":1744840701268}],"afters":[],"start":1744840696627,"stop":1744840701270}

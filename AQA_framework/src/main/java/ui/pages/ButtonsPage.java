@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,11 +34,12 @@ public class ButtonsPage {
     }
 
     public void doubleClickButton() {
-        // Прокрутка до елемента та явне очікування, щоб переконатися, що він клікабельний
+
         wait.until(ExpectedConditions.elementToBeClickable(doubleClickBtn));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", doubleClickBtn);
-        // Використовуйте JavaScript для кліку, якщо стандартний клік не проходить:
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", doubleClickBtn);
+
+        Actions actions = new Actions(driver);
+        actions.doubleClick(doubleClickBtn).perform();
     }
 
     public String getDoubleClickMessage() {
@@ -49,7 +51,8 @@ public class ButtonsPage {
     public void rightClickButton() {
         wait.until(ExpectedConditions.elementToBeClickable(rightClickBtn));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", rightClickBtn);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", rightClickBtn);
+        Actions actions = new Actions(driver);
+        actions.contextClick(rightClickBtn).perform();
     }
 
     public String getRightClickMessage() {
