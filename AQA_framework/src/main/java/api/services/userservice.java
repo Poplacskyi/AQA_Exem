@@ -16,7 +16,7 @@ public class userservice {
                 .extract().response();
     }
 
-    public Response createUser(api.models.user user) {
+    public Response createUser(api.models.User user) {
         return RestAssured
                 .given()
                 .baseUri(BASE_URL)

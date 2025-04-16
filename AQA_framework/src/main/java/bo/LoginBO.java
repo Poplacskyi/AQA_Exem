@@ -1,21 +1,18 @@
 package bo;
 
 import org.openqa.selenium.WebDriver;
-import ui.pages.HomePage;
+import ui.pages.LoginPage;
 
 public class LoginBO {
-    private WebDriver driver;
-    private HomePage homePage;
+    private LoginPage loginPage;
 
     public LoginBO(WebDriver driver) {
-        this.driver = driver;
-        this.homePage = new HomePage(driver);
+        this.loginPage = new LoginPage(driver);
     }
 
-    // Приклад бізнес-логіки: відкриття домашньої сторінки та логування
-    public void performLogin(String username, String password) {
-        homePage.open();
-        // Додайте логіку для введення даних та натискання кнопки логіну
-        System.out.println("Perform login with " + username);
+    public void login(String username, String password) {
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
+        loginPage.clickLoginButton();
     }
 }

@@ -1,26 +1,24 @@
-package driver;
+package drivers;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverPool {
+
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public static WebDriver getDriver(String browser) {
         if (driver.get() == null) {
-            switch (browser.toLowerCase()) {
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driver.set(new ChromeDriver());
-                    break;
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driver.set(new FirefoxDriver());
-                    break;
-                default:
-                    throw new RuntimeException("Unsupported browser: " + browser);
+            if ("chrome".equalsIgnoreCase(browser)) {
+                WebDriverManager.chromedriver().setup();
+                driver.set(new ChromeDriver());
+            } else if ("firefox".equalsIgnoreCase(browser)) {
+                WebDriverManager.firefoxdriver().setup();
+                driver.set(new FirefoxDriver());
+            } else {
+                throw new IllegalArgumentException("Browser \"" + browser + "\" is not supported.");
             }
         }
         return driver.get();
