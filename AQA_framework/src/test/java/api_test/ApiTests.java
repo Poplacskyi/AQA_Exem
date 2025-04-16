@@ -16,8 +16,10 @@ public class ApiTests {
 
     @Test
     public void testCreateUser(){
-        api.models.User user = new api.models.User(null, "John Doe", "john@example.com");
+        api.models.User user = new api.models.User( "John Doe", "john@example.com");
         Response response = userService.createUser(user);
         Assert.assertEquals(response.getStatusCode(), 201, "User not created");
     }
 }
+
+

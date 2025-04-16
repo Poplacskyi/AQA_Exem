@@ -1,5 +1,6 @@
 package ui.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,8 +41,9 @@ public class ButtonsPage {
     }
 
     public String getDoubleClickMessage() {
-        WebElement msg = wait.until(ExpectedConditions.visibilityOf(doubleClickMsg));
-        return msg.getText();
+        WebElement messageElement = new WebDriverWait(driver, Duration.ofSeconds(20))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.id("doubleClickMessage")));
+        return messageElement.getText();
     }
 
     public void rightClickButton() {

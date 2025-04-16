@@ -1,6 +1,6 @@
-package ui.tests;
+package ui_test;
 
-import drivers.DriverFactory;
+import driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -11,18 +11,19 @@ import bo.LoginBO;
 public class HomeTest {
 
     private WebDriver driver;
-    private LoginBO userBO;
+    private LoginBO loginBO;
 
     @BeforeMethod
     public void setUp() {
         driver = DriverFactory.getDriver("chrome");
-        driver.get("https://your-application-url.com");
-        userBO = new UserBO(driver);
+        driver.get("https://demoqa.com/buttons");
+        loginBO = new LoginBO(driver);
     }
 
     @Test
     public void testWelcomeMessage() {
-        String message = userBO.getHomeWelcomeMessage();
+        // Зверніть увагу, що даний метод має бути викликаним з екземпляру loginBO (якщо getHomeWelcomeMessage() не статичний)
+        String message = loginBO.getHomeWelcomeMessage();
         Assert.assertTrue(message.contains("Welcome"), "Привітальне повідомлення не містить слова 'Welcome'");
     }
 

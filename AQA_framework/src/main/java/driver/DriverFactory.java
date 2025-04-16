@@ -1,5 +1,6 @@
-package drivers;
+package driver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -7,15 +8,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class DriverFactory {
     private static WebDriver driver;
 
-    // Метод для отримання драйвера (можна розширювати для підтримки декількох браузерів)
     public static WebDriver getDriver(String browser) {
-        if(driver == null) {
-            if(browser.equalsIgnoreCase("chrome")) {
-                // Вкажіть шлях до chromedriver, якщо він не встановлений системно
-                System.setProperty("webdriver.chrome.driver", "path/to/chromedriver.exe");
+        if (driver == null) {
+            if (browser.equalsIgnoreCase("chrome")) {
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
-            } else if(browser.equalsIgnoreCase("firefox")) {
-                System.setProperty("webdriver.gecko.driver", "path/to/geckodriver.exe");
+            } else if (browser.equalsIgnoreCase("firefox")) {
+                WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
             } else {
                 throw new IllegalArgumentException("Unsupported browser: " + browser);
@@ -25,7 +24,7 @@ public class DriverFactory {
     }
 
     public static void quitDriver() {
-        if(driver != null) {
+        if (driver != null) {
             driver.quit();
             driver = null;
         }

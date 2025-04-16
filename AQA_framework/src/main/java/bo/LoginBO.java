@@ -1,18 +1,22 @@
 package bo;
 
 import org.openqa.selenium.WebDriver;
-import ui.pages.LoginPage;
+import ui.pages.HomePage;
 
 public class LoginBO {
-    private LoginPage loginPage;
+    private HomePage homePage;
 
+    // Конструктор приймає WebDriver та ініціалізує HomePage
     public LoginBO(WebDriver driver) {
-        this.loginPage = new LoginPage(driver);
+        // Припускаємо, що після логіну ви переходите на головну сторінку
+        this.homePage = new HomePage(driver);
     }
 
-    public void login(String username, String password) {
-        loginPage.enterUsername(username);
-        loginPage.enterPassword(password);
-        loginPage.clickLoginButton();
+    // Метод, який повертає повідомлення привітання з головної сторінки
+    public String getHomeWelcomeMessage() {
+        // Припустимо, що в HomePage є метод getWelcomeMessage()
+        return homePage.getWelcomeMessage();
     }
+
+    // Якщо у вас є інші методи для логіну, їх також можна додати сюди
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import drivers.DriverFactory;
+import driver.DriverFactory;
 
 public class CustomTestListener implements ITestListener {
 

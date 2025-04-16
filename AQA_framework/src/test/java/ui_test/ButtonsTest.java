@@ -1,6 +1,6 @@
 package ui_test;
 
-import drivers.DriverFactory;
+import driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
